@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -12,7 +13,10 @@ class School(models.Model):
     def __str__(self):
         return self.name
 
-class Person(models.Model):
+
+
+class Person(AbstractUser):
+    # Add your custom fields here, such as 'name', 'surname', 'patronymic', 'email', 'school', and 'status'
     name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
     patronymic = models.CharField(max_length=50, blank=True, null=True)
