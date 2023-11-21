@@ -21,10 +21,10 @@ class School(models.Model):
 
 
 class Person(AbstractUser):
-    # Add your custom fields here, such as 'name', 'surname', 'patronymic', 'email', 'school', and 'status'
-    name = models.CharField(max_length=50)
-    surname = models.CharField(max_length=50)
-    patronymic = models.CharField(max_length=50, blank=True, null=True)
+    # Add your custom fields here, such as 'first_name', 'middle_name', 'last_name', 'email', 'school', and 'status'
+    first_name = models.CharField(max_length=50)
+    middle_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=50)
     email = models.EmailField()
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=[
@@ -34,6 +34,9 @@ class Person(AbstractUser):
         ('special_staff', 'Special Staff'),
         ('administrator', 'Administrator'),
     ])
+    nationality = models.CharField(max_length=50)
+    address = models.CharField(max_length=255)
+    # Other fields as needed
 
     def __str__(self):
         return f"{self.name} {self.surname} - {self.status}"
