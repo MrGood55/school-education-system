@@ -21,9 +21,9 @@ class SchoolForm(forms.Form):
 
 class AdminForSchoolForm(forms.Form):
     first_name = forms.CharField(label='First Name', max_length=50)
-    # middle_name = forms.CharField(label='Middle Name', max_length=50)
-    # last_name = forms.CharField(label='Last Name', max_length=50)
-    # email = forms.EmailField(label='email', max_length=80)
+    middle_name = forms.CharField(label='Middle Name', max_length=50)
+    last_name = forms.CharField(label='Last Name', max_length=50)
+    email = forms.EmailField(label='email', max_length=80)
     nationality = forms.CharField(label='Nationality', max_length=50)
     address_for_admin = forms.CharField(label='Address for admin', max_length=255)
 

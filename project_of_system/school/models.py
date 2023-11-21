@@ -23,17 +23,17 @@ class School(models.Model):
 class Person(AbstractUser):
     # Add your custom fields here, such as 'first_name', 'middle_name', 'last_name', 'email', 'school', and 'status'
     first_name = models.CharField(max_length=50)
-    # middle_name = models.CharField(max_length=50, blank=True, null=True)
-    # last_name = models.CharField(max_length=50)
-    # email = models.EmailField()
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
-    # status = models.CharField(max_length=20, choices=[
-    #     ('student', 'Student'),
-    #     ('parent', 'Parent'),
-    #     ('teacher', 'Teacher'),
-    #     ('special_staff', 'Special Staff'),
-    #     ('administrator', 'Administrator'),
-    # ])
+    middle_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    school = models.ForeignKey(School, on_delete=models.CASCADE, null=True, blank=True)
+    status = models.CharField(max_length=20, choices=[
+        ('student', 'Student'),
+        ('parent', 'Parent'),
+        ('teacher', 'Teacher'),
+        ('special_staff', 'Special Staff'),
+        ('administrator', 'Administrator'),
+    ], default='student')
     nationality = models.CharField(max_length=50)
     address = models.CharField(max_length=255)
     # Other fields as needed
