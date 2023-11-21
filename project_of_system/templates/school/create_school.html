@@ -1,0 +1,32 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+    <h2>Create School</h2>
+    <!-- Your form or other content for creating a school -->
+
+    <div>
+        <form method="post"> <!--form_for_word-->
+            {% csrf_token %}
+            <input type="hidden" name="form-type" value="form_for_word">
+
+            <h3>Школа</h3> 
+            <ul>
+                {% for field_school in school_form %}
+                    <li>{{field_school}}</li>
+                {% endfor %}
+            </ul> 
+            
+            <h3>Админ школы</h3>    
+            <ul>
+                {% for field_admin in admin_for_school_form %}
+                    <li>{{field_admin}}</li>
+                {% endfor %}
+            </ul>
+
+            
+            <button class="#" type="submit">Создать</button>
+        </form>
+    </div>
+    
+    
+{% endblock %}
