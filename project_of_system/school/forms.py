@@ -21,14 +21,15 @@ class SchoolForm(forms.Form):
 
 class AdminForSchoolForm(forms.Form):
     
-
+    
     first_name = forms.CharField(label='First Name', max_length=50)
     middle_name = forms.CharField(label='Middle Name', max_length=50)
     last_name = forms.CharField(label='Last Name', max_length=50)
-    nationality = forms.CharField(label='Nationality', max_length=50)
-    address_for_admin = forms.CharField(label='Address for admin', max_length=255)
-    password = forms.CharField(max_length=40)
-    
+    address_for_admin = forms.CharField(label="Admin's address", max_length=255)
+
+    username = forms.CharField(label='Username', max_length=50)
+    email = forms.EmailField(label='Email')
+    password = forms.CharField(label='Password',max_length=40)
 
     # school
     # status ('administrator', 'Administrator')

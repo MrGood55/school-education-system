@@ -10,8 +10,13 @@
 
 <nav>
     <ul>
+        <li><a href="{% url 'school:index' %}">Home</a></li>
         <li><a href="{% url 'school:create_school' %}">Create School</a></li>
-        <li><a href="#">Create Person</a></li>
+        <ul>
+            <li><a href="#">Sign in</a></li>
+            <li><a href="#">Sign up</a></li>
+        </ul>
+        
         <!-- Add more menu items for other views -->
     </ul>
 </nav>
