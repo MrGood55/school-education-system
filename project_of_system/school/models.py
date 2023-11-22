@@ -18,8 +18,8 @@ class School(models.Model):
     def __str__(self):
         return self.name
 
-class CustomizeUser(AbstractUser):
-    person = models.OneToOneField(to='Person')
+# class CustomizeUser(AbstractUser):
+#     person = models.OneToOneField(to='Person')
 
 class Person(models.Model):
     # Add your custom fields here, such as 'first_name', 'middle_name', 'last_name', 'email', 'school', and 'status'
