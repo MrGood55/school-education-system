@@ -30,22 +30,22 @@ def create_school(request):
 
                 
 
-            # fetch data
+            ## fetch data
             first_name = admin_for_school_form.cleaned_data['first_name']
             middle_name = admin_for_school_form.cleaned_data['middle_name']
             last_name = admin_for_school_form.cleaned_data['last_name']
-            email = admin_for_school_form.cleaned_data['email']
+            email = admin_for_school_form.cleaned_data['address_for_admin']
             nationality = admin_for_school_form.cleaned_data['nationality']
             address_for_admin = admin_for_school_form.cleaned_data['address_for_admin']
-            # Perform actions with the form data, e.g., create a School instance
+            ## Perform actions with the form data, e.g., create a School instance
             if Person.objects.exists():
-                if not Person.objects.filter(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school.pk).exists():
-                    admin = Person(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school.pk)
+                if not Person.objects.filter(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school).exists():
+                    admin = Person(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school)
                     admin.save()
                 else:
-                    admin = Person.objects.get(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school.pk)
+                    admin = Person.objects.get(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school)
             else:
-                admin = Person(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school.pk) #,status='administrator'
+                admin = Person(first_name=first_name,middle_name=middle_name,last_name=last_name,email=email,nationality=nationality,address=address_for_admin,school=school) #,status='administrator'
                 admin.save()
 
             print(name,country,region,city,address)
