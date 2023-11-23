@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import SchoolForm,AdminForSchoolForm
+from django.views.generic import CreateView
+from .forms import SchoolForm,AdminForSchoolForm,LoginUserForm,RegisterUserForm
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import  login
+from django.urls import reverse_lazy
+
 from .models import School, Person
 from django.contrib.auth.models import User
 # Create your views here.
@@ -7,6 +12,7 @@ from django.contrib.auth.models import User
 def index(request):
     return render(request, 'school/index.html')
 
+## Sign up for admin with school
 def create_school(request):
     if request.method == 'POST':
         request_post = request.POST
@@ -61,3 +67,27 @@ def create_school(request):
         school_form = SchoolForm()
         admin_for_school_form = AdminForSchoolForm()
     return render(request, 'school/create_school.html', {'school_form': school_form,'admin_for_school_form': admin_for_school_form})
+
+
+
+
+    
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'school/register.html'
+    success_url = reverse_lazy('school:login')
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('school:done')
+## Sign in for admin with school
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'school/login.html'
+    def get_success_url(self):
+        return redirect('school:done')
+
+
+
+def done(request):
+    return render(request, 'school/done.html')

@@ -37,6 +37,7 @@ class Person(models.Model):
     first_name = models.CharField(max_length=50, blank=True, null=True)
     middle_name = models.CharField(max_length=50, blank=True, null=True)
     last_name = models.CharField(max_length=50, blank=True, null=True)
+    ## TODO OneToMany for school
     school = models.ForeignKey(to='School', on_delete=models.CASCADE,related_name='person_school', null=True, blank=True)
     status = models.CharField(max_length=20, choices=[
         ('student', 'Student'),

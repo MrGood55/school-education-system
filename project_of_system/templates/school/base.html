@@ -11,10 +11,12 @@
 <nav>
     <ul>
         <li><a href="{% url 'school:index' %}">Home</a></li>
-        <li><a href="{% url 'school:create_school' %}">Create School</a></li>
+        {% comment %} <li><a href="{% url 'school:create_school' %}">Create School</a></li> {% endcomment %}
         <ul>
-            <li><a href="#">Sign in</a></li>
-            <li><a href="#">Sign up</a></li>
+            <li><a href="{% url 'school:login' %}">Sign in by class</a></li>
+            <li><a href="{% url 'school:signup' %}">Sign up by class</a></li>
+
+            <li><a href="{% url 'school:create_school' %}">Sign up</a></li>
         </ul>
         
         <!-- Add more menu items for other views -->

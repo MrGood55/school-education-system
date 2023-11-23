@@ -29,7 +29,7 @@ class AdminForSchoolForm(forms.Form):
 
     username = forms.CharField(label='Username', max_length=50)
     email = forms.EmailField(label='Email')
-    password = forms.CharField(label='Password',max_length=40)
+    password = forms.CharField(label='Password',max_length=40, widget=forms.PasswordInput())
 
     # school
     # status ('administrator', 'Administrator')
